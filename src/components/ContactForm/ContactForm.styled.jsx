@@ -35,4 +35,15 @@ export const Button = styled.button`
   color: rgb(255, 255, 255);
 
   text-transform: uppercase;
+  :hover,
+  :focus {
+    transform: scale(1.025);
+    background-color: #5a79c1;
+  }
+  &:active {
+    scale: 0.95;
+    background-color: #f12828a9;
+    outline: 5px solid #f12828a9;
+    outline-offset: 7px;
+  }
 `;
