@@ -37,6 +37,17 @@ export class App extends Component {
     }));
   };
 
+  delContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
+  filterChange = evt => {
+    const { value } = evt.target;
+    this.setState({ filter: value });
+  };
+
   render() {
     return (
       <Layout>
@@ -44,7 +55,10 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
         {/* <Filter ... /> */}
-        <ContactList contacts={this.state.contacts} />
+        <ContactList
+          contacts={this.state.contacts}
+          onDelContact={this.delContact}
+        />
 
         <GlobalStyle />
       </Layout>

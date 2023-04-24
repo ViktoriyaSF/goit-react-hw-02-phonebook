@@ -1,16 +1,23 @@
 import propTypes from 'prop-types';
 import React from 'react';
+import { List, Item } from './ContactList.syled';
+import { FiDelete } from 'react-icons/fi';
 
-export const ContactList = ({ contacts }) => {
+// FiDelete;
+export const ContactList = ({ contacts, onDelContact }) => {
   return (
-    <ul>
+    <List>
       {contacts.map(({ id, name, number }) => (
-        <li key={id}>
-          <p>{name}: </p>
+        <Item key={id}>
+          <p>{name}:</p>
           <p>{number}</p>
-        </li>
+
+          <div onClick={() => onDelContact(id)}>
+            <FiDelete />
+          </div>
+        </Item>
       ))}
-    </ul>
+    </List>
   );
 };
 ContactList.propTypes = {
