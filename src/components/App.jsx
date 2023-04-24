@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -37,26 +38,38 @@ export class App extends Component {
     }));
   };
 
+  // Фільтрація
+  filterChange = evt => {
+    const { value } = evt.target;
+    this.setState({ filter: value });
+  };
+
+  //фільтер не залежно від розміру літер
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const NormaCase = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(NormaCase)
+    );
+  };
+
+  //видалення контакту
   delContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
 
-  filterChange = evt => {
-    const { value } = evt.target;
-    this.setState({ filter: value });
-  };
-
   render() {
+    const { filter } = this.state;
     return (
       <Layout>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
-        {/* <Filter ... /> */}
+        <Filter value={filter} onChange={this.filterChange} />
         <ContactList
-          contacts={this.state.contacts}
+          contacts={this.getVisibleContacts()}
           onDelContact={this.delContact}
         />
 
