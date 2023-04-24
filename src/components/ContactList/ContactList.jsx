@@ -12,9 +12,9 @@ export const ContactList = ({ contacts, onDelContact }) => {
           <p>{name}:</p>
           <p>{number}</p>
 
-          <div onClick={() => onDelContact(id)}>
+          <button onClick={() => onDelContact(id)}>
             <FiDelete />
-          </div>
+          </button>
         </Item>
       ))}
     </List>

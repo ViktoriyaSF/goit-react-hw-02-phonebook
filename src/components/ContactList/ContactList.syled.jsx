@@ -19,10 +19,11 @@ export const Item = styled.li`
     background-color: #fff;
   }
 
-  div {
+  button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: transparent;
 
     :hover,
     :focus {
