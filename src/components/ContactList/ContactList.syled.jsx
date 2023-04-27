@@ -24,16 +24,18 @@ export const Item = styled.li`
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
+    padding: 0;
 
     :hover,
     :focus {
       transform: scale(1.025);
-      background-color: #5a79c1;
+      color: #4801fb;
     }
     &:active {
       scale: 0.95;
       border-radius: 50%;
-      outline: 5px solid #f12828a9;
+      color: #f12828a9;
+      outline: 3px solid #f12828a9;
       outline-offset: 7px;
     }
   }
